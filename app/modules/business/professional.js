@@ -7,7 +7,7 @@ module.exports = app => {
     return {
         create: async user => {
             try {
-                user.password = await bcrypt.hash(user.password, 10)
+                // user.password = await bcrypt.hash(user.password, 10)
                 return Promise.resolve(user)
             } catch (err) {
                 return Promise.reject(errorSistem.dataProcessing)

@@ -1,23 +1,11 @@
-module.exports = (app) => {
-    const jwt = require('jsonwebtoken')
-    const key = process.env.TOKEN_SECRET
-    const Errors = require('../errors/system/error')
-    const Validate = require('./validate')
-    const User = app.datasource.models.User
-    return {
-        validate: (req, res, next) => {
-            const token = req.headers['token']
-            const query = {
-                where: {
-                    token: {$eq: token}
-                },
-                raw: true
-            }
-            Validate.isToken(token, Errors.tokenRequired)
-                .then(Validate.validateToken(Errors.tokenUser, jwt, key, Validate.isToken))
-                .then(() => Validate.searchQuery(User, query))
-                .then(Validate.isLogged(req, res, next, Errors.tokenUser))
-                .catch(err => res.status(401).json([err]))
-        }
-    }
+const jwt = require('jsonwebtoken')
+
+module.exports.veryfyToken = (req, res, next) => {
+    console.log('req.headers.token: ', req.headers.token)
+    jwt.verify(req.headers.token, '12342314123y4hrsladjkjf;jsfd;ajstqw4129i571h2uwfjaskf!@#@$#ˆ$&*(Wsaf gohqo34151%#!$#ˆ@$%ˆ$#%$ˆ#U$ˆWESDFBXSV56', function (err, decoded) {
+        if (err) res.send(err).status(401)
+        req.userDecoded = decoded
+        next()
+    })
 }
+

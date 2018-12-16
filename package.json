@@ -29,14 +29,17 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
-    "jsonwebtoken": "^8.1.0",
-    "mongoose": "^4.13.7",
-    "morgan": "^1.9.0",
-    "nodemon": "^1.14.3",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.0",
+    "morgan": "^1.9.1",
+    "node-uber": "^2.0.0",
+    "nodemon": "^1.18.9",
     "stone_pagamentos": "^1.0.3"
   }
 }

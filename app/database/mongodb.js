@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')
 
-const url = process.env.MONGODB_URL
+const url = `mongodb://${process.env.MONGODB_URL}:27017/hack_dasa`
 
 const options = {
     useMongoClient: true
